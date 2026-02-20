@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://yhovkud44iwq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mr84r"]
+bg_color = Color(0.65, 0.65, 0.65, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 30
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbw6v"]
+bg_color = Color(0.9, 0.9, 0.9, 1)
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 20
+
+[node name="DialogueBubble" type="Control" unique_id=1371914153]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1797317781]
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 200.0
+theme_override_constants/separation = 0
+
+[node name="NamePanel" type="Panel" parent="VBoxContainer" unique_id=8449609]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mr84r")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/NamePanel" unique_id=2003185205]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/NamePanel/MarginContainer" unique_id=575497265]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Franklin"
+
+[node name="TextPanel" type="Panel" parent="VBoxContainer" unique_id=1162551630]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbw6v")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TextPanel" unique_id=1564441661]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/TextPanel/MarginContainer" unique_id=1676604696]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
