@@ -1,0 +1,80 @@
+[
+	{
+		"id": "a_test",
+		"question_id": "q_test",
+		"theme": "test",
+		"variants": [
+			{
+				"dere": "neutral",
+				"text": [
+					"Нейтральный ответ",
+					"Вот это точно 100% нейтральный ответ",
+					"Придерживаюсь нейтралитета",
+				],
+			
+				"effects": {
+					"pawnshop": { "reputation": 1, "fame": 1 }
+				}
+			},
+			
+			{
+				"dere": "tsundere",
+				"text": [
+					"Дурак простак",
+					"Цундере ответ",
+					"Хмпф! Дурак!"
+				],
+
+				"effects": {
+					"player": { "tsundere": 2, "deredere": -1, "kudere": -2, "dandere": -2},
+					"pawnshop": { "reputation": 1, "fame": 0 }
+				},
+			},
+			
+			{
+				"dere": "deredere",
+				"text": [
+					"Продавец бенто из академии идолов",
+					"Смотри-смотри! Какой сегодня потрясающий день! Солнышко сияет, птички поют — я хочу всех обнять",
+					"Счастливый пируэт!"
+				],
+
+				"effects": {
+					"player": { "tsundere": -1, "deredere": 2, "kudere": -2, "dandere": -1 },
+					"pawnshop": { "reputation": 2, "fame": 1 }
+				},
+			},
+			
+			{
+				"dere": "kudere",
+				"text": [
+					"…Ясно",
+					"Я не злюсь. Просто… всё равно.",
+					"Логично.",
+				],
+
+				"effects": {
+					"player": { "tsundere": -2, "deredere": -1, "kudere": 2, "dandere": -1 },
+					"pawnshop": { "reputation": 1, "fame": 0 }
+				},
+			},
+			
+			{
+				"dere": "dandere",
+				"text": [
+					"…Я… не против… если ты хочешь поиграть вместе.",
+					"…Я… хочу быть твоим другом… если можно…",
+					"я… верю в тебя…"
+				],
+
+				"effects": {
+					"player": { "tsundere": -2, "deredere": -1, "kudere": -1, "dandere": 2 },
+					"pawnshop": { "reputation": 2, "fame": 2 }
+				},
+			}
+			
+		],
+		"requirements": {},
+		"is_end": false
+  	}
+]

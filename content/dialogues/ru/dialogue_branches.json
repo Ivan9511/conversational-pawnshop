@@ -1,0 +1,57 @@
+[
+	{
+		"id": "br_test",
+		"answer_id": "a_test",
+		"theme": "test",
+		"variant": 
+		[
+			{
+				"dere": "neutral",
+				"dialogue": [
+					{ "id": 1, "character": "npc", "text": ["Тестовый диалог. Фраза нпс 1 - neutral"] },
+					{ "id": 2, "character": "player", "text": ["Тестовый диалог. Фраза игрока 1 - neutral"] },
+					{ "id": 3, "character": "player", "text": ["Тестовый диалог. Фраза игрока 2 - neutral"] },
+					{ "id": 4, "character": "player", "text": ["Тестовый диалог. Фраза игрока 3 - neutral"] },
+					{ "id": 5, "character": "npc", "text": ["Тестовый диалог. Фраза нпс 2 - neutral"] },
+					{ "id": 6, "character": "npc", "text": ["Тестовый диалог. Фраза нпс 3 - neutral"] }
+				]
+			},
+			
+			{
+				"dere": "deredere",
+				"dialogue": [
+					{ "id": 1, "character": "npc", "text": ["Тестовый диалог. Фраза нпс 1 - deredere"] },
+					{ "id": 2, "character": "player", "text": ["Тестовый диалог. Фраза игрока 1 - deredere"] },
+					{ "id": 3, "character": "player", "text": ["Тестовый диалог. Фраза игрока 2 - deredere"] },
+					{ "id": 4, "character": "player", "text": ["Тестовый диалог. Фраза игрока 3 - deredere"] },
+					{ "id": 5, "character": "npc", "text": ["Тестовый диалог. Фраза нпс 2 - deredere"] },
+					{ "id": 6, "character": "npc", "text": ["Тестовый диалог. Фраза нпс 3 - deredere"] }
+				]
+			},
+			
+			{
+				"dere": "kudere",
+				"dialogue": [
+					{ "id": 1, "character": "npc", "text": ["Тестовый диалог. Фраза нпс 1 - kudere"] },
+					{ "id": 2, "character": "player", "text": ["Тестовый диалог. Фраза игрока 1 - kudere"] },
+					{ "id": 3, "character": "player", "text": ["Тестовый диалог. Фраза игрока 2 - kudere"] },
+					{ "id": 4, "character": "player", "text": ["Тестовый диалог. Фраза игрока 3 - kudere"] },
+					{ "id": 5, "character": "npc", "text": ["Тестовый диалог. Фраза нпс 2 - kudere"] },
+					{ "id": 6, "character": "npc", "text": ["Тестовый диалог. Фраза нпс 3 - kudere"] }
+				]
+			},
+			
+			{
+				"dere": "dandere",
+				"dialogue": [
+					{ "id": 1, "character": "npc", "text": ["Тестовый диалог. Фраза нпс 1 - dandere"] },
+					{ "id": 2, "character": "player", "text": ["Тестовый диалог. Фраза игрока 1 - dandere"] },
+					{ "id": 3, "character": "player", "text": ["Тестовый диалог. Фраза игрока 2 - dandere"] },
+					{ "id": 4, "character": "player", "text": ["Тестовый диалог. Фраза игрока 3 - dandere"] },
+					{ "id": 5, "character": "npc", "text": ["Тестовый диалог. Фраза нпс 2 - dandere"] },
+					{ "id": 6, "character": "npc", "text": ["Тестовый диалог. Фраза нпс 3 - dandere"] }
+				]
+			}
+		],
+  	}
+]
