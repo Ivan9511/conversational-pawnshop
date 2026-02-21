@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://cmfqqmt84c7i6"]
+
+[ext_resource type="Script" uid="uid://0trlu4f8c6q1" path="res://entities/npc/npc_data.gd" id="1_s02hx"]
+[ext_resource type="Texture2D" uid="uid://d3otfas6v1b7p" path="res://content/characters/test_npc.png" id="2_cyuj1"]
+
+[resource]
+script = ExtResource("1_s02hx")
+sprite = ExtResource("2_cyuj1")
