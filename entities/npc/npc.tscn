@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b3gs2e54w88to"]
+
+[ext_resource type="Script" uid="uid://bysksx1vvd8k0" path="res://entities/npc/npc.gd" id="1_gwous"]
+
+[node name="Npc" type="Node2D" unique_id=2145915301]
+script = ExtResource("1_gwous")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=429686741]
+position = Vector2(0, -393)
+scale = Vector2(0.4, 0.4)
