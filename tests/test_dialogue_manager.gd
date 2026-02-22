@@ -7,9 +7,9 @@ var manager: Node
 # MOCK DATA
 # ───────────────────────────────
 class MockNPC:
+	var id := "0"
 	var gender := "Male"
 	var favorite_dere_type := "tsundere"
-	var unique_name := "Franklin"
 
 class MockPlayer:
 	var dere := {"tsundere": 50, "deredere": 25, "kudere": 25, "dandere": 25}
@@ -85,7 +85,6 @@ func test_initialization() -> void:
 
 
 func test_indexes() -> void:
-	assert_true(manager.questions_by_scene.size() > 0, "questions_by_scene built")
 	assert_true(manager.answers_by_question.size() > 0, "answers_by_question built")
 	assert_true(manager.branches_by_answer.size() > 0, "branches_by_answer built")
 
@@ -93,7 +92,7 @@ func test_indexes() -> void:
 func test_requirements_ignore_case() -> void:
 	var npc = MockNPC.new()
 	var player = MockPlayer.new()
-	var ctx: Dictionary = manager.make_context(npc, player, null)
+	var ctx: Dictionary = manager.make_context(npc, player, null, {})
 
 	var req := {"npc": {"gender": "male"}}
 	var ok: bool = manager._check_requirements(req, ctx)
@@ -104,8 +103,8 @@ func test_question_selection() -> void:
 	var npc = MockNPC.new()
 	var player = MockPlayer.new()
 
-	var q = manager.get_question(npc, "cashbox_game", player, null)
-	assert_not_null(q, "Question selected for scene cashbox_game")
+	var q = manager.get_question(npc, player, null)
+	assert_not_null(q, "Question selected")
 
 	assert_true(typeof(q.get("text", null)) == TYPE_STRING, "QuestionDTO.text is String (randomized)")
 	print("Question:", q)
@@ -115,12 +114,12 @@ func test_answer_options() -> void:
 	var npc = MockNPC.new()
 	var player = MockPlayer.new()
 
-	var q = manager.get_question(npc, "cashbox_game", player, null)
+	var q = manager.get_question(npc, player, null)
 	if q == null:
 		_fail("Answer options: question is null, cannot test")
 		return
 
-	var ctx: Dictionary = manager.make_context(npc, player, null)
+	var ctx: Dictionary = manager.make_context(npc, player, null, {})
 	var options: Array = manager.get_answer_options(q, ctx, 6)
 
 	assert_true(options.size() > 0, "Answer options generated")
@@ -141,7 +140,7 @@ func test_branch_variant() -> void:
 func test_effects() -> void:
 	var npc = MockNPC.new()
 	var player = MockPlayer.new()
-	var ctx: Dictionary = manager.make_context(npc, player, null)
+	var ctx: Dictionary = manager.make_context(npc, player, null, {})
 
 	var effects := {"player": {"tsundere": 5}}
 	manager.apply_effects(effects, ctx)

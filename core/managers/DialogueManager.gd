@@ -8,7 +8,6 @@ var branches: Dictionary = {}  # id -> Dictionary (branch)
 
 
 # INDEXES
-var questions_by_scene: Dictionary = {}      # scene -> Array[Dictionary(question)]
 var answers_by_question: Dictionary = {}     # question_id -> Array[Dictionary(answer-block)]
 var answers_by_id: Dictionary = {}           # answer_id -> Dictionary(answer-block)
 var branches_by_answer: Dictionary = {}      # answer_id -> Dictionary(branch)
@@ -39,21 +38,17 @@ func make_context(npc: Variant, player: Variant, store: Variant, flags: Dictiona
 
 
 # PUBLIC: QUESTION
-# Retuurn ready question-DTO (Dictionary):
-# { id, theme, scene, text:String, requirements:Dictionary, answer_id:String }
-func get_question(npc: Variant, scene: String, player: Variant = null, store: Variant = null, flags: Dictionary = {}) -> Variant:
+# Return ready question-DTO (Dictionary):
+# { id, theme, text:String, requirements:Dictionary, answer_id:String }
+func get_question(npc: Variant, player: Variant = null, store: Variant = null, flags: Dictionary = {}) -> Variant:
 	if not _initialized:
 		initialize()
 
 	var ctx := make_context(npc, player, store, flags)
 
-	if not questions_by_scene.has(scene):
-		return null
-
 	var pool: Array = []
-	var scene_questions: Array = questions_by_scene[scene]
 
-	for q in scene_questions:
+	for q in questions.values():
 		var req: Dictionary = q.get("requirements", {})
 		if _check_requirements(req, ctx):
 			pool.append(q)
@@ -219,16 +214,9 @@ func _load_json_as_dict(path: String) -> Dictionary:
 
 
 func _build_indexes() -> void:
-	questions_by_scene.clear()
 	answers_by_question.clear()
 	answers_by_id.clear()
 	branches_by_answer.clear()
-
-	for q in questions.values():
-		var scene := str(q.get("scene", ""))
-		if not questions_by_scene.has(scene):
-			questions_by_scene[scene] = []
-		questions_by_scene[scene].append(q)
 
 	for a in answers.values():
 		var aid := str(a.get("id", ""))
@@ -331,9 +319,8 @@ func _make_question_dto(q: Dictionary) -> Dictionary:
 	var dto: Dictionary = {}
 	dto["id"] = str(q.get("id", ""))
 	dto["theme"] = str(q.get("theme", ""))
-	dto["scene"] = str(q.get("scene", ""))
 	dto["requirements"] = q.get("requirements", {}).duplicate(true)
-	dto["answer_id"] = str(q.get("answer_id", ""))
+	dto["answer_id"] = q.get("answer_id", "")
 
 	var texts: Array = q.get("text", [])
 	dto["text"] = str(texts.pick_random()) if texts.size() > 0 else ""
@@ -363,16 +350,6 @@ func _get_answer_blocks_for_question(question: Dictionary) -> Array:
 	# priority 1: question.answer_id
 	var aid := str(question.get("answer_id", ""))
 	if aid != "":
-		if question["answer_id"] is Array:
-			var res0: Array = []
-			var ids_arr: Array = question["answer_id"]
-			for x in ids_arr:
-				var id0 := str(x)
-				if answers_by_id.has(id0):
-					res0.append(answers_by_id[id0])
-			if not res0.is_empty():
-				return res0
-
 		if aid.find(",") != -1:
 			var res1: Array = []
 			var parts := aid.split(",", false)
