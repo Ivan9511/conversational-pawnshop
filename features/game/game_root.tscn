@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c4mqf6iouikn7"]
+
+[ext_resource type="PackedScene" uid="uid://dvra05ncao6wx" path="res://features/game/game_root_ui.tscn" id="1_je8o1"]
+[ext_resource type="Script" uid="uid://chb05x1j83bdq" path="res://features/game/game_root.gd" id="1_tv0f1"]
+[ext_resource type="PackedScene" uid="uid://yhovkud44iwq" path="res://entities/dialogue_bubble/dialogue_bubble.tscn" id="3_kml5g"]
+
+[node name="GameRoot" type="Node2D" unique_id=1989645818]
+script = ExtResource("1_tv0f1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1453647038]
+
+[node name="GameRootUi" parent="CanvasLayer" unique_id=338586282 instance=ExtResource("1_je8o1")]
+
+[node name="DialogueBubble" parent="CanvasLayer" unique_id=1371914153 instance=ExtResource("3_kml5g")]
+offset_left = 301.0
+offset_top = 441.0
+offset_right = 301.0
+offset_bottom = 441.0
+
+[node name="NpcSpawnPoint" type="Node2D" parent="." unique_id=362405898]
+position = Vector2(599, 864)
