@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dvra05ncao6wx"]
 
+[ext_resource type="PackedScene" uid="uid://yhovkud44iwq" path="res://entities/dialogue_bubble/dialogue_bubble.tscn" id="2_owwi8"]
+
 [node name="GameRootUi" type="Control" unique_id=338586282]
 layout_mode = 3
 anchors_preset = 15
@@ -59,3 +61,17 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Rotate"
+
+[node name="DialogueBubbleMarginContainer" type="MarginContainer" parent="." unique_id=231211117]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogueBubble" parent="DialogueBubbleMarginContainer" unique_id=1371914153 instance=ExtResource("2_owwi8")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
