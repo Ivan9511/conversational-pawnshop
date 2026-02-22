@@ -63,8 +63,8 @@ func get_question(npc: Variant, player: Variant = null, store: Variant = null, f
 
 # PUBLIC: ANSWER OPTIONS (готовые опции для UI)
 # Return Array[Dictionary]:
-# { answer_id, dere_type, display_text, effects, is_end }
-func get_answer_options(question: Dictionary, ctx: Dictionary, max_options: int = 6) -> Array:
+# { answer_id, dere_type, text, effects, is_end }
+func get_answers(question: Dictionary, ctx: Dictionary, max_options: int = 6) -> Array:
 	if not _initialized:
 		initialize()
 
@@ -340,7 +340,7 @@ func _make_answer_option_dto(answer_block: Dictionary, variant: Dictionary) -> D
 	dto["effects"] = effects
 
 	var arr: Array = variant.get("text", [])
-	dto["display_text"] = str(arr.pick_random()) if arr.size() > 0 else "[no text]"
+	dto["text"] = str(arr.pick_random()) if arr.size() > 0 else "[no text]"
 
 	return dto
 
