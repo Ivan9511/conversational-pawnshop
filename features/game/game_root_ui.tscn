@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dvra05ncao6wx"]
 
+[ext_resource type="Script" uid="uid://b64r6vv7yst7" path="res://features/game/game_root_ui.gd" id="1_ve2ou"]
 [ext_resource type="PackedScene" uid="uid://yhovkud44iwq" path="res://entities/dialogue_bubble/dialogue_bubble.tscn" id="2_owwi8"]
 
 [node name="GameRootUi" type="Control" unique_id=338586282]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ve2ou")
 
 [node name="MainMarginContainer" type="MarginContainer" parent="." unique_id=1207412309]
 layout_mode = 1

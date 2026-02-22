@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://yhovkud44iwq"]
 
+[ext_resource type="Script" uid="uid://c1nd5lvipl33m" path="res://entities/dialogue_bubble/dialogue_bubble.gd" id="1_cbw6v"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mr84r"]
 bg_color = Color(0.65, 0.65, 0.65, 1)
 corner_radius_top_left = 2
@@ -20,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cbw6v")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1797317781]
 layout_mode = 0

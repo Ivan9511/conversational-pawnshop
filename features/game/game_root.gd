@@ -7,6 +7,14 @@ extends Node2D
 var npc_scene: PackedScene
 var rng := RandomNumberGenerator.new()
 
+@onready var ui_scene: Control = $CanvasLayer/GameRootUi
+
+var current_npc: Node2D = null
+var current_question: Dictionary = {}
+var current_ctx: Dictionary = {}
+var dialogue_flags: Dictionary = {}
+
+
 func _ready() -> void:
 	rng.randomize()
 
@@ -16,6 +24,8 @@ func _ready() -> void:
 		return
 
 	spawn_random_npc()
+	
+	start_dialogue()
 
 
 func spawn_random_npc() -> void:
@@ -28,6 +38,8 @@ func spawn_random_npc() -> void:
 	npc_instance.data = npc_data
 	npc_instance.global_position = npc_spawn_point.global_position
 	add_child(npc_instance)
+
+	current_npc = npc_instance
 
 
 func get_random_npc_data() -> NPCData:
@@ -58,3 +70,41 @@ func get_random_npc_data() -> NPCData:
 		return null
 
 	return npc_data
+
+
+func start_dialogue():
+	if current_npc == null:
+		push_error("start_dialogue: current_npc == null")
+		return {}
+
+	var npc_data: NPCData = current_npc.data
+
+	current_ctx = DialogueManager.make_context(
+		npc_data,
+		PlayerState,
+		dialogue_flags
+	)
+
+	var question: Variant = DialogueManager.get_question(
+		npc_data,
+		PlayerState,
+		dialogue_flags
+	)
+
+	if question == null:
+		print("Dialogue: no suitable question for this NPC")
+		current_question = {}
+		return {}
+
+	current_question = question
+
+	var answers: Array = DialogueManager.get_answers(current_question, current_ctx)
+	
+	ui_scene.set_dialogue(current_npc.name, current_question.get("text"))
+	ui_scene.set_answers(answers)
+
+	print("--- QUESTION ---")
+	print(current_question.get("text", ""))
+	print("--- ANSWERS ---")
+	for o in answers:
+		print("- ", o.get("text", ""))
